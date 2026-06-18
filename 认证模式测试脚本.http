@@ -1,0 +1,10 @@
+# 客户端模式
+POST localhost:9088/oauth2/token
+Authorization: Basic Y2xpZW50LWlkOmNsaWVudC1zZWNyZXQ=
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="grant_type"
+
+client_credentials
+--WebAppBoundary

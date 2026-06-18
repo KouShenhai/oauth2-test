@@ -1,0 +1,12 @@
+server:
+  port: 9088
+
+app:
+  oauth2:
+    client:
+      id: client-id
+      secret: client-secret
+
+logging:
+  level:
+    org.springframework.security: info
