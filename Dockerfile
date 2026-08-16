@@ -8,14 +8,13 @@ COPY pom.xml ./
 RUN mvn --batch-mode --update-snapshots dependency:go-offline
 
 COPY src ./src
-RUN mvn --batch-mode --update-snapshots clean package -DskipTests \
-    && cp target/*.jar /tmp/app.jar
+RUN mvn --batch-mode --update-snapshots clean package -DskipTests
 
 FROM eclipse-temurin:25-jre
 WORKDIR /app
 
 RUN groupadd --system spring && useradd --system --gid spring spring
-COPY --from=build /tmp/app.jar app.jar
+COPY --from=build /workspace/target/oauth2-test.jar app.jar
 
 USER spring
 EXPOSE 9088
