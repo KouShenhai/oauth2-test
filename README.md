@@ -9,7 +9,18 @@
 mvn spring-boot:run
 ```
 
-默认端口是 `9000`。
+默认端口是 `9088`。
+
+## Docker 镜像构建与发布
+
+GitHub Actions 会在每次推送时先执行 Maven 校验，然后自动构建并推送 Docker 镜像到 Docker Hub。请在仓库的 **Settings → Secrets and variables → Actions** 中配置以下 Actions secrets：
+
+| Secret | 说明 |
+| --- | --- |
+| `DOCKERHUB_USERNAME` | Docker Hub 用户名或组织名 |
+| `DOCKERHUB_TOKEN` | Docker Hub access token（需要镜像仓库的推送权限） |
+
+推送到 `main` 分支会生成 `latest` 与 `main` 标签；推送 Git 标签（例如 `v1.0.0`）会生成对应的版本标签。PR 仅执行 Maven 校验，不会推送镜像。
 
 ## 获取 Access Token
 
